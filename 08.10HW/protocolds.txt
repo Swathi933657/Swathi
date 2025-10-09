@@ -1,0 +1,38 @@
+1.HTTP (HyperText Transfer Protocol):
+🔹 Meaning:
+HTTP is used for web communication — when your Python program talks to a website or API.
+🔹 In Python:
+You can use the requests library to send HTTP requests.
+
+2.HTTPS (HyperText Transfer Protocol Secure):
+🔹 Meaning:
+Same as HTTP but with encryption (SSL/TLS) for secure communication.
+Used for banking, logins, secure websites, etc.
+🔹 In Python:
+requests automatically supports HTTPS.
+
+3.TCP/IP (Transmission Control Protocol / Internet Protocol):
+🔹 Meaning:
+TCP/IP is the core internet protocol — controls how data is sent and received.
+It’s reliable, meaning data always arrives in order.
+Python provides the socket module to work directly with TCP/IP.
+
+Here:
+socket.AF_INET → IPv4
+socket.SOCK_STREAM → TCP protocol
+This sends an HTTP request using raw TCP (lower-level networking).
+
+4.UDP (User Datagram Protocol):
+🔹 Meaning:
+UDP is a faster but unreliable protocol — used for video streaming, gaming, and live calls.
+It doesn’t confirm if data reached the destination.
+
+Summary Table:
+| Protocol   | Full Form                                | Used For          | Python Module             | Secure?             | Reliable?       |
+| ---------- | ---------------------------------------- | ----------------- | ------------------------- | ------------------- | --------------- |
+| **HTTP**   | HyperText Transfer Protocol              | Websites, APIs    | `requests`, `http.client` | ❌ No                | ✅ Yes (via TCP) |
+| **HTTPS**  | Secure HTTP                              | Secure web apps   | `requests`                | ✅ Yes (SSL/TLS)     | ✅ Yes           |
+| **TCP/IP** | Transmission Control / Internet Protocol | Internet backbone | `socket`                  | ❌ No (but reliable) | ✅ Yes           |
+| **UDP**    | User Datagram Protocol                   | Streaming, Gaming | `socket`                  | ❌ No                | ❌ No (fast)     |
+
+

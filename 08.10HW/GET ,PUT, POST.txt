@@ -1,0 +1,32 @@
+Summary of HTTP Methods:
+| Method     | Action   | Example Use         | Python Function     |
+| ---------- | -------- | ------------------- | ------------------- |
+| **GET**    | Retrieve | Fetch list of users | `requests.get()`    |
+| **POST**   | Create   | Add new user        | `requests.post()`   |
+| **PUT**    | Update   | Edit existing user  | `requests.put()`    |
+| **DELETE** | Delete   | Remove user         | `requests.delete()` |
+
+
+*GET — Retrieve Data:
+Used to fetch data from an API.
+The server doesn’t change any data here — it just returns it.
+
+*POST — Create Data:
+Used to send new data to the server (like creating a new record).
+POST = Send new data to be saved.
+
+*PUT — Update Data:
+Used to replace or update an existing record.
+PUT = Update entire record (replace old data).
+
+*DELETE — Remove Data:
+Used to delete an existing record.
+DELETE = Remove data from the server.
+
+Summary of HTTP Methods:
+| Method     | Action   | Example Use         | Python Function     |
+| ---------- | -------- | ------------------- | ------------------- |
+| **GET**    | Retrieve | Fetch list of users | `requests.get()`    |
+| **POST**   | Create   | Add new user        | `requests.post()`   |
+| **PUT**    | Update   | Edit existing user  | `requests.put()`    |
+| **DELETE** | Delete   | Remove user         | `requests.delete()` |

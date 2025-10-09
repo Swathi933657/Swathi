@@ -1,0 +1,47 @@
+OWASP:
+OWASP stands for Open Web Application Security Project.
+It’s not specific to Python, but it’s a global organization that provides standards, tools, and best practices to help developers build secure web applications — including those built with Python.
+
+OWASP Applies to Python Web Apps
+You can apply OWASP principles to frameworks like:
+🔸 Flask
+Disable debug mode in production.
+Validate and sanitize all input (wtforms, bleach).
+Use Flask-Talisman for HTTPS and security headers.
+🔸 Django
+Use Django’s built-in CSRF, XSS, SQL injection protection.
+Don’t expose sensitive info in settings.py.
+Keep Django and dependencies up to date.
+
+OWASP Tools Useful for Python Developers:
+
+| Tool                             | Purpose                                                 |
+| -------------------------------- | ------------------------------------------------------- |
+| **OWASP ZAP (Zed Attack Proxy)** | Scans your web app for vulnerabilities (like SQLi, XSS) |
+| **Dependency-Check**             | Detects vulnerable libraries in your Python environment |
+| **Cheat Sheet Series**           | Provides best practices for secure coding               |
+| **OWASP Dependency Track**       | Monitors security of dependencies continuously          |
+
+OWASP Top 10 — Most Common Web Security Risks:
+OWASP publishes a list of the Top 10 web application security risks, which every Python web developer should know.
+| Rank | Vulnerability                                  | Example in Python                                    | Description                                          |
+| ---- | ---------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| 1    | **Broken Access Control**                      | Not checking user permissions in Flask/Django routes | Users can access data they shouldn’t                 |
+| 2    | **Cryptographic Failures**                     | Using weak or no encryption                          | Sensitive data like passwords not properly encrypted |
+| 3    | **Injection**                                  | SQL Injection using raw queries                      | Malicious input modifies SQL queries                 |
+| 4    | **Insecure Design**                            | No validation or threat modeling                     | Weak design allowing abuse                           |
+| 5    | **Security Misconfiguration**                  | Debug mode ON in Flask/Django in production          | Misconfigured server reveals sensitive data          |
+| 6    | **Vulnerable and Outdated Components**         | Using old Python packages                            | Older libraries with known exploits                  |
+| 7    | **Identification and Authentication Failures** | Weak password system                                 | Login bypass or brute force attacks                  |
+| 8    | **Software and Data Integrity Failures**       | Using unverified dependencies                        | Code tampering or malicious packages                 |
+| 9    | **Security Logging and Monitoring Failures**   | No error logging                                     | Security incidents go unnoticed                      |
+| 10   | **Server-Side Request Forgery (SSRF)**         | Fetching external URLs without validation            | Attacker makes server call unauthorized URLs         |
+
+
+🌍 Meaning:
+
+OWASP = a non-profit community that works to:
+Improve web application security.
+Educate developers about common web security risks.
+Provide guidelines to prevent vulnerabilities.
+

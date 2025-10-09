@@ -1,0 +1,84 @@
+1. What is SQL (Structured Query Language)?
+🔹 Meaning:
+SQL is a language used to interact with relational databases — to store, retrieve, and manage data in tables (rows and columns).
+It’s not a database, but the language that databases like MySQL, PostgreSQL, DB2 use.
+
+Common SQL Commands:
+| Command        | Purpose            |
+| -------------- | ------------------ |
+| `CREATE TABLE` | Create a new table |
+| `INSERT INTO`  | Add new data       |
+| `SELECT`       | Retrieve data      |
+| `UPDATE`       | Modify data        |
+| `DELETE`       | Remove data        |
+
+2.MySQL
+🔹 Meaning:
+MySQL is a relational database management system (RDBMS) that uses SQL.
+It’s open-source, fast, and very common in web apps.
+
+🔹 Features:
+-Uses SQL for queries
+-Stores data in tables
+-Great for Flask/Django apps
+-Supports ACID transactions (safe and reliable)
+🔹 In Python:
+Use the mysql-connector-python or PyMySQL library.
+*MySQL works perfectly with Python web frameworks like Django, Flask.
+
+3.PostgreSQL (psql):
+🔹 Meaning:
+PostgreSQL (often called Postgres or psql) is another RDBMS, more advanced than MySQL.
+
+🔹 Features:
+-Open-source
+-More powerful and strict than MySQL
+-Supports JSON data, custom functions, complex queries
+-Great for data-heavy or enterprise apps.
+*PostgreSQL is often used in Django, FastAPI, and data analytics.
+
+4.NoSQL (Not Only SQL):
+🔹 Meaning:
+NoSQL databases store data in non-tabular formats (not rows/columns).
+Data is stored as:
+-Documents (JSON-like)
+-Key-value pairs
+-Graphs
+-Columns
+
+Example: MongoDB (a popular NoSQL DB):
+| SQL Table                 | NoSQL Document (JSON)             |
+| ------------------------- | --------------------------------- |
+| name = "Swathi", age = 21 | `{ "name": "Swathi", "age": 21 }` |
+
+*Used for flexible, unstructured, or big data systems (e.g. chat apps, logs, IoT).
+
+5.DB2 (IBM Database 2)
+🔹 Meaning:
+IBM DB2 is a commercial relational database developed by IBM.
+It supports both SQL and NoSQL-like JSON data.
+🔹 Features:
+-Very secure, scalable, and used by enterprises
+-Integrates with IBM Cloud and mainframes
+-Supports Python, Java, and other languages
+
+*Used in banking, finance, and large-scale enterprise apps.
+
+Difference Between SQL, MySQL, PostgreSQL, NoSQL, and DB2:
+| Feature            | **SQL**         | **MySQL**            | **PostgreSQL (psql)** | **NoSQL (MongoDB)**        | **DB2**                 |
+| ------------------ | --------------- | -------------------- | --------------------- | -------------------------- | ----------------------- |
+| **Type**           | Query Language  | RDBMS                | RDBMS                 | Non-Relational DB          | RDBMS                   |
+| **Data Storage**   | —               | Tables               | Tables                | JSON/Key-Value             | Tables & JSON           |
+| **Structure**      | —               | Structured           | Structured + JSON     | Unstructured               | Structured              |
+| **Speed**          | —               | Fast                 | Moderate              | Very Fast (for large data) | High (Enterprise-grade) |
+| **Best For**       | Writing queries | Websites, small apps | Large, complex apps   | Big Data, IoT              | Enterprise systems      |
+| **Python Library** | —               | `mysql.connector`    | `psycopg2`            | `pymongo`                  | `ibm_db`                |
+| **Example Use**    | —               | Blog, E-commerce     | Data analytics        | Chat apps, logs            | Banking systems         |
+
+
+
+
+
+
+
+
