@@ -1,0 +1,28 @@
+To convert Celsius (°C) to Fahrenheit (°F), use the formula:
+
+🔢 Formula:
+°F=(°C×9/5)+32
+
+Example:
+
+Convert 25°C to Fahrenheit:
+
+°𝐹=(25×9/5)+32=45+32=77°𝐹
+
+Python Code (Optional):
+celsius = float(input("Enter temperature in Celsius: "))
+fahrenheit = (celsius * 9/5) + 32
+print("Temperature in Fahrenheit:", fahrenheit)
+
+Conversion Table
+| Celsius (°C) | Fahrenheit (°F)     |
+| ------------ | ------------------- |
+| 0            | 32                  |
+| 10           | 50                  |
+| 20           | 68                  |
+| 25           | 77                  |
+| 30           | 86                  |
+| 37           | 98.6 (human body)   |
+| 100          | 212 (boiling point) |
+
+
