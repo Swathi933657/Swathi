@@ -1,0 +1,175 @@
+1.What is FASTAPI  and why is it popular?
+ANS:FastAPI is a modern Python framework used to build APIs (web applications) quickly and efficiently.
+It is based on Python 3.6+, and uses ASGI (Asynchronous Server Gateway Interface).
+It is mainly used for:
+✔️ Building REST APIs
+✔️ Handling HTTP requests (GET, POST, PUT, DELETE)
+✔️ Fast backend development.
+FastAPI Popular:
+| Reason                       | Explanation                                                                  |
+| ---------------------------- | ---------------------------------------------------------------------------- |
+| ⚡ **Very Fast**              | It is one of the fastest Python frameworks – close to Node.js & Go in speed. |
+| 🧠 **Easy to Learn**         | Simple and clean code – perfect for beginners and professionals.             |
+| 🔁 **Asynchronous**          | Supports async programming (better performance).                             |
+| 🧾 **Automatic Docs**        | Gives API documentation automatically using Swagger UI and ReDoc.            |
+| 🛡️ **Type Hinting Support** | Uses Python type hints to catch errors early.                                |
+| 📦 **Used in Production**    | Big companies like Uber, Microsoft, Netflix use it.                          |
+
+Example:
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")   # GET request
+def home():
+    return {"message": "Welcome to FastAPI!"}
+
+
+2.What is Difference between FastAPI and Flask?
+ANS:FastAPI vs Flask:
+| Feature                  | **FastAPI**                            | **Flask**                     |
+| ------------------------ | -------------------------------------- | ----------------------------- |
+| **Speed**                | 🚀 Very fast (supports async)          | 🐢 Slower compared to FastAPI |
+| **Type Checking**        | ✔ Uses Python type hints (less errors) | ❌ No built-in type checking   |
+| **Automatic API Docs**   | ✔ YES (Swagger & ReDoc)                | ❌ NO (needs extra packages)   |
+| **Asynchronous Support** | ✔ Built-in async/await support         | ❌ Not built-in                |
+| **Learning Curve**       | 🧠 Easy and modern                     | 😊 Very easy, simple          |
+| **Best For**             | APIs, ML models, production apps       | Small apps, beginners         |
+| **Used By**              | Uber, Netflix, Microsoft               | Pinterest, Mozilla            |
+
+Flask:
+Older framework (released in 2010)
+Good for simple projects
+Requires extra libraries for authentication, database, validation, etc.
+Does not support async natively
+
+CODE:
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello from Flask!"
+
+FastAPI:
+New (released in 2018)
+Designed for fast performance and APIs
+Automatically creates API documentation
+Supports async / await (better for real-time apps)
+
+CODE:
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"message": "Hello from FastAPI!"}
+
+
+
+3.What is ASGI and WSGI?
+ANS:WSGI:
+WSGI is the older Python standard.
+Works only with synchronous (one-by-one) requests.
+Good for simple web pages.
+Not good for live chat, notifications, video calls, real-time apps.
+
+👉 Used in : Flask, old Django, Pyramid, Bottle
+client → Request → WSGI → Response → Client
+
+ ASGI:
+ASGI is the modern version of WSGI.
+Supports asynchronous requests (multiple at a time)
+Better for real-time apps like chat, streaming, games
+Can handle WebSockets
+
+👉 Used in : FastAPI, Django (3.0+), Starlette
+
+Multiple Clients → ASGI → Fast & Real-time Responses
+
+🧾 Diagram
+WSGI (Old Way)      →  One request at a time ⏳  
+ASGI (New Way)      →  Handles many requests at once ⚡
+
+WSGI vs ASGI:
+| Feature        | **WSGI**                          | **ASGI**                                     |
+| -------------- | --------------------------------- | -------------------------------------------- |
+| Full Form      | Web Server Gateway Interface      | Asynchronous Server Gateway Interface        |
+| Type           | Synchronous (1 request at a time) | Asynchronous (handles many requests at once) |
+| Speed          | Slower                            | Faster                                       |
+| Real-time apps | ❌ Not suitable                    | ✔ Supports real-time apps                    |
+| Best For       | Old/traditional web apps          | Modern, fast APIs & web apps                 |
+| Used In        | Flask, Django (old versions)      | FastAPI, Django (new versions)               |
+
+
+
+4.What is pydantic's role in FastAPI?
+ANS:Pydantic is a Python library used for:
+✔️ Data validation
+✔️ Data parsing
+✔️ Type checking
+It helps ensure that incoming data (like API requests) is correct and safe.
+
+Pydantic’s Role in FastAPI:
+| Purpose               | What Pydantic Does                                                    |
+| --------------------- | --------------------------------------------------------------------- |
+| 📝 Validate data      | Checks if the data is correct (e.g., email format, integer vs string) |
+| 📦 Create data models | Defines request & response structures                                 |
+| 🛡️ Prevent errors    | Catches wrong input before it breaks code                             |
+| 📄 API docs           | Helps FastAPI generate clear documentation automatically              |
+
+
+5.What is Dependency injection?
+ANS: Dependency Injection (DI) means giving the required tools (dependencies) to a function or class instead of creating them inside it.
+👉 It helps to reuse code, write cleaner programs, and test easily.
+
+Without DI:
+def get_data():
+    db = Database()  # created inside function
+    return db.fetch()
+⚠ Problem: If we want to use another database, testing becomes difficult because the database is fixed inside the function.
+
+With Dependency Injection:
+def get_data(db: Database):  # Dependency is passed to the function
+    return db.fetch()
+
+Now we can easily change or replace the database:
+
+python
+Copy code
+db = Database()
+get_data(db)   # easy and flexible
+
+Dependency Injection useful:
+✔ Makes code reusable
+✔ Easy to test
+✔ Reduces errors
+✔ Cleaner & more organized code
+✔ We can replace parts easily (plug-and-play)
+
+Dependency Injection in FastAPI:
+FastAPI supports DI automatically using the Depends() function.
+
+EXAMPLE:
+from fastapi import FastAPI, Depends
+
+app = FastAPI()
+
+# Dependency function
+def get_db():
+    return "Database Connected"
+
+@app.get("/items/")
+def read_items(db=Depends(get_db)):
+    return {"message": db}
+
+Conclusion:
+
+Dependency Injection = Giving tools instead of creating them.
+It helps write clean, flexible, and testable code.
+FastAPI makes DI very easy using Depends().
+
+
