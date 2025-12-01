@@ -1,0 +1,46 @@
+What is CRUD?
+CRUD stands for Create, Read, Update, Delete.
+These are the basic operations we do with data in databases or APIs.
+| Letter | Meaning | Action on Data    |
+| ------ | ------- | ----------------- |
+| **C**  | Create  | Add new data      |
+| **R**  | Read    | Get existing data |
+| **U**  | Update  | Modify data       |
+| **D**  | Delete  | Remove data       |
+
+Example (Burger Shop Order System):
+| Operation  | Example                |
+| ---------- | ---------------------- |
+| **Create** | Add a new burger order |
+| **Read**   | View all burger orders |
+| **Update** | Change order details   |
+| **Delete** | Cancel an order        |
+
+Python + FastAPI Example:
+from fastapi import FastAPI
+
+app = FastAPI()
+students = []
+
+# CREATE
+@app.post("/students")
+def add_student(student: dict):
+    students.append(student)
+    return {"message": "Student added"}
+
+# READ
+@app.get("/students")
+def get_students():
+    return students
+
+# UPDATE
+@app.put("/students/{index}")
+def update_student(index: int, student: dict):
+    students[index] = student
+    return {"message": "Student updated"}
+
+# DELETE
+@app.delete("/students/{index}")
+def delete_student(index: int):
+    students.pop(index)
+    return {"message": "Student deleted"}
