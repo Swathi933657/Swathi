@@ -1,0 +1,160 @@
+what the difference the module,package,labrary,framework?
+1️⃣ Module
+
+A module is a single Python file (.py) containing functions, classes, or variables
+eg:# Example module: greetings.py
+def hello():
+    print("Hello!")
+2️⃣ Package
+
+A package is a collection of modules stored in a folder.
+It must contain __init__.py file to be recognized as a package.
+eg:data_tools/        ← Package
+   ├── __init__.py
+   ├── cleaning.py  ← Module
+   └── analysis.py  ← Module
+3️⃣ Library
+
+A library is a collection of useful packages and modules that provide tools for specific tasks.
+
+✔ Helps you perform tasks without writing code from scratch
+✔ You choose when and how to use it
+eg:Pandas → Data handling
+NumPy → Numerical operations
+Matplotlib → Data visualization
+Requests → API calls
+
+4️⃣ Framework
+
+A framework is bigger than a library.
+It gives a structure to your project and controls the flow of your program.
+
+🚦 “In a framework, you follow the rules it sets.”
+📌 It calls your code — this is known as Inversion of Control.
+eg:Django → Web development framework
+FastAPI → API building framework
+Flask → Lightweight framework
+TensorFlow → ML framework
+
+Comparison Table:
+| Term          | Size             | You control?                 | Example                |
+| ------------- | ---------------- | ---------------------------- | ---------------------- |
+| **Module**    | Smallest         | Yes                          | `math.py`              |
+| **Package**   | Group of modules | Yes                          | `numpy.random`         |
+| **Library**   | Large collection | Yes                          | `pandas`, `matplotlib` |
+| **Framework** | Very large       | No (framework controls flow) | `django`, `flask`      |
+
+
+2.understand numpy,seaborn,ponds?
+ans:1. NumPy (Numerical Python)
+Used for mathematical & numerical operations.
+It provides arrays (faster than Python lists) and many math functions.
+✔ Fast calculations
+✔ Works with matrices & arrays
+✔ Used in Machine Learning
+eg:import numpy as np
+arr = np.array([1, 2, 3, 4])
+print(arr * 2)     # Output: [2 4 6 8]
+
+ Pandas (Data Handling & Analysis)
+(Maybe you wrote “ponds” — correct name is pandas)
+Used to store and analyze data, especially tables (rows & columns) like Excel.
+✔ Uses DataFrame (table format)
+✔ Easy data cleaning
+✔ Filtering, sorting, merging data
+eg:import pandas as pd
+
+data = {'Name': ['A', 'B', 'C'], 'Age': [20, 25, 30]}
+df = pd.DataFrame(data)
+print(df)
+
+output:  Name  Age
+0    A   20
+1    B   25
+2    C   30
+
+Seaborn (Data Visualization)
+Used for beautiful graphs and statistical charts.
+✔ Built on top of matplotlib
+✔ Makes visualizations easy
+✔ Used for EDA (Exploratory Data Analysis)
+eg:import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.countplot(x=[1, 2, 2, 3, 3, 3])
+plt.show()
+
+
+table:
+| Library     | Purpose                | Example Use        |
+| ----------- | ---------------------- | ------------------ |
+| **NumPy**   | Numerical calculations | Arrays, Matrix     |
+| **Pandas**  | Data analysis          | DataFrame (tables) |
+| **Seaborn** | Data visualization     | Charts & Graphs    |
+
+What is a Scaler in Python (Machine Learning)?
+ans:A scaler is a tool used to change the range of data so that all values are on a similar scale.
+Why?
+Because ML algorithms work better when features are in similar ranges.
+Example:
+Suppose your data has:
+Age → 18 to 60
+Salary → 20,000 to 100,000
+👉 These values have different scales, which may confuse the ML model.
+So we scale them to a similar range like 0 to 1.
+
+Common Scalers in Python (sklearn):
+| Scaler Name        | Purpose                                    |
+| ------------------ | ------------------------------------------ |
+| **StandardScaler** | Converts data to have mean = 0 and std = 1 |
+| **MinMaxScaler**   | Scales data between 0 and 1                |
+| **RobustScaler**   | Used when outliers are present             |
+| **Normalizer**     | Converts values to unit vector length      |
+
+eg code:
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+
+# Sample data
+data = np.array([[10], [20], [30], [40], [50]])
+
+# Create scaler object
+scaler = StandardScaler()
+
+# Fit and transform data
+scaled_data = scaler.fit_transform(data)
+
+print(scaled_data)
+
+
+waht is mean median and mode?
+ans:These are used in statistics to find the central value in a dataset.
+1)Mean (Average)
+The mean is the sum of all numbers divided by total count.
+Formula:
+
+Mean=Total number of values /Sum of all values
+Example:
+Numbers: 5, 10, 15, 20
+Mean = (5 + 10 + 15 + 20) / 4 = 12.5
+
+2️⃣ Median (Middle Value)
+The median is the middle value when numbers are sorted.
+Steps:
+Arrange numbers in ascending order
+If odd count → middle one
+If even count → average of two middle values
+Example:
+Numbers: 5, 10, 15, 20, 25 → Median = 15
+Numbers: 5, 10, 15, 20 → Median = (10 + 15) / 2 = 12.5
+
+3️⃣ Mode (Most Frequent Value)
+The mode is the number that appears the most times.
+
+Example:Numbers: 2, 4, 4, 6, 8, 4 → Mode = 4
+There can be:
+One mode → Unimodal
+Two modes → Bimodal
+More than two → Multimodal
+No mode → If all values are different
+
