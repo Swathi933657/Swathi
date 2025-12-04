@@ -1,0 +1,229 @@
+1.What is astype in pandas?
+ans:In Pandas, astype() is a function used to change the data type of a column or an entire DataFrame.
+It converts data from one type to another, such as:
+string → integer
+integer → float
+float → string
+object → category, etc.
+
+🧠 Syntax
+df['column_name'].astype(new_type)
+
+Example:
+import pandas as pd
+
+data = {'Age': ['20', '25', '30']}
+df = pd.DataFrame(data)
+
+# Convert Age column from string to integer
+df['Age'] = df['Age'].astype(int)
+
+print(df)
+print(df.dtypes)
+
+
+output:
+   Age
+0   20
+1   25
+2   30
+
+Age    int64
+dtype: object
+
+2.between method in padans?
+ans:The between() method in Pandas is used to check whether values in a column lie between two ranges (inclusive by default).
+It returns True or False for each row depending on whether the values fall between the given start and end values.
+Syntax:
+Series.between(left, right, inclusive='both')
+
+
+left → lower bound
+right → upper bound
+inclusive → can be 'both', 'neither', 'left', or 'right'
+
+example:
+import pandas as pd
+
+df = pd.DataFrame({'Age': [15, 18, 25, 30, 40]})
+
+# Check which ages are between 18 and 30
+result = df['Age'].between(18, 30)
+
+print(result)
+ output:
+0    False
+1     True
+2     True
+3     True
+4    False
+Name: Age, dtype: bool
+
+3.write down the python code use between without using pandas?
+ans:Example: Check numbers between a range:
+# List of values
+ages = [15, 18, 25, 30, 40]
+
+# Check ages between 18 and 30 (inclusive)
+result = [18 <= age <= 30 for age in ages]
+
+print(result)
+
+output:
+[False, True, True, True, False]
+
+
+4.cliping in pandas?
+ans:In Pandas, clipping means limiting the values in a column or DataFrame to a specified range.
+It replaces values below the minimum or above the maximum with the boundary values.
+use clip():
+To remove extreme outliers
+To keep values only in a valid range (like marks, ages, sensor readings)
+Useful in preprocessing data for machine learning
+
+In short:
+
+clip() forces all values to stay within a range.
+
+Clip an entire DataFrame:
+df.clip(lower=30, upper=100)
+
+clip() Method in Pandas:
+Syntax:
+
+DataFrame.clip(lower=None, upper=None)
+Series.clip(lower=None, upper=None)
+
+
+-lower → minimum allowed value
+-upper → maximum allowed value
+
+5. keep in last duplicate drop?
+ans:To drop duplicate rows but keep the last occurrence, we use:
+drop_duplicates(keep='last')
+
+example:
+import pandas as pd
+
+df = pd.DataFrame({
+    'Name': ['A', 'B', 'A', 'C', 'B', 'D'],
+    'Age':  [20, 25, 20, 30, 25, 40]
+})
+
+# Drop duplicates but keep only the last occurrence
+result = df.drop_duplicates(keep='last')
+
+print(result)
+
+output:
+  Name  Age
+2    A   20
+4    B   25
+3    C   30
+5    D   40
+
+Apply on a specific column
+df.drop_duplicates(subset='Name', keep='last')
+
+Explanation
+-keep='last' → keeps the last repeated value, removes the earlier ones.
+-Opposite is keep='first' (default).
+
+6.print null and position of the null and remove null keep drop duplicates of last?
+ans:ere is a complete example in Pandas that does all the following:
+
+🔹 Print null values
+🔹 Print positions (index + column) of null values
+🔹 Remove null values
+🔹 Drop duplicates keeping the last occurrence
+sample:
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({
+    'Name': ['A', 'B', np.nan, 'A', 'C', 'B'],
+    'Age':  [20, 25, 30, np.nan, 30, 25]
+})
+
+print("Original DataFrame:\n", df)
+
+7.count no.of null(sum) from list?
+ans:To count the number of null values from a Python list (without pandas), we can use None to represent null.
+
+✔️ Example
+data = [10, None, 25, None, 40, 50, None]
+
+# count number of None (null values)
+null_count = data.count(None)
+
+print("Number of null values:", null_count)
+
+output:
+Number of null values: 3
+
+8.apply and grades in pandas?
+ans:n Pandas, apply() is used to apply a custom function to each value (or row/column).
+We can use it to assign grades based on marks.
+
+🎓 Example: Apply + Grades in Pandas:
+import pandas as pd
+
+# Sample Data
+df = pd.DataFrame({'Name': ['A', 'B', 'C', 'D', 'E'],
+                   'Marks': [95, 82, 67, 53, 40]})
+
+# Function to assign grades
+def get_grade(m):
+    if m >= 90:
+        return "A+"
+    elif m >= 75:
+        return "A"
+    elif m >= 60:
+        return "B"
+    elif m >= 50:
+        return "C"
+    else:
+        return "Fail"
+
+# Applying function
+df['Grade'] = df['Marks'].apply(get_grade)
+
+print(df)
+
+output:
+  Name  Marks Grade
+0    A     95    A+
+1    B     82     A
+2    C     67     B
+3    D     53     C
+4    E     40  Fail
+
+Using lambda instead of function:
+df['Grade'] = df['Marks'].apply(lambda m: "A+" if m>=90 else
+                                              "A" if m>=75 else
+                                              "B" if m>=60 else
+                                              "C" if m>=50 else "Fail")
+9.apply method in pandas?
+ans:The apply() method in Pandas is used to apply a custom function on a Series (column) or an entire DataFrame (row-wise or column-wise).
+It is very useful when you want to transform, calculate, or categorize data.
+
+📌 Syntax
+Series.apply(function)
+DataFrame.apply(function, axis=0 or 1)
+
+
+axis=0 → apply to each column
+
+axis=1 → apply to each row
+
+When to use apply():
+| Use Case              | Example              |
+| --------------------- | -------------------- |
+| Convert values        | Marks + bonus        |
+| Categorize data       | Grades               |
+| Row-wise calculations | Total marks, salary  |
+| Format or clean text  | Lowercase, uppercase |
+
+Key Points
+apply() is slower than vectorized operations (like df['col'] + 10)
+Best use: custom logic, conditions, text cleaning, complex calculations.
