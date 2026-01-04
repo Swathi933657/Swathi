@@ -18,7 +18,7 @@ app = FastAPI()
 
 @app.post('/add/task')
 async def add_task(request: Request):
-    data = await request.json()#{"id":3, "title":"second task","status":"pending"}
+    data = await request.json()#{"id":2, "title":"second task","status":"pending"}
     # print(data)
     result = db.table('tasks').insert(data).execute()
     return "success"
@@ -30,24 +30,24 @@ def get_all_tasks():
     return tasks
 
 
-# @app.get('/task')
-# def get_task(task_id):
-#     result  = db.table('tasks').select('*').eq('id', task_id).execute()
-#     data = result.data
-#     return data
+@app.get('/task')
+def get_task(task_id):
+    result  = db.table('tasks').select('*').eq('id', task_id).execute()
+    data = result.data
+    return data
         
        
     
 
-# @app.put('/task/{task_id}')
-# async def update_task(request: Request, task_id):
-#     data = await request.json()#{ 'status':'done'}
-#     result = db.table('tasks').update(data).eq('id', task_id).execute()
-#     return "Updated successfully"
+@app.put('/task/{task_id}')
+async def update_task(request: Request, task_id):
+    data = await request.json()#{ 'status':'done'}
+    result = db.table('tasks').update(data).eq('id', task_id).execute()
+    return "Updated successfully"
     
-# @app.delete('/task/{task_id}')
-# def delete_task(task_id):
-#         result = db.table('tasks').delete().eq('id', task_id).execute()
-#         return "Deleted successfully"
+@app.delete('/task/{task_id}')
+def delete_task(task_id):
+        result = db.table('tasks').delete().eq('id', task_id).execute()
+        return "Deleted successfully"
         
         

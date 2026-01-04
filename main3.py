@@ -2,39 +2,39 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse,HTMLResponse,RedirectResponse
 from supabase import create_client
 
-
 db_url = "https://suorztdvwvsmsixkkfor.supabase.co"
 db_key = "sb_publishable_rl7Ya1ryHSDllAIHzw7_rA_favefr-B"
 
-db = create_client(db_url, db_key)
+
+db = create_client(db_url , db_key)
 
 app = FastAPI()
 
-@app.post('/add/contact')
-async def add_contact(request: Request):
-    data = await request.json()#{
-    result = db.table('contacts').insert(data).execute()
-    return "contact added success"
+@app.post('/add/student')
+async def add_student(request: Request):
+    data = await request.json()#{"id":1, "name":"pooja","score":850}
+    result = db.table('students').insert(data).execute()
+    return "pass"
 
-@app.get('/contacts')
-def get_all_contacts():
-    result = db.table('contacts').select('*').execute()
-    return result.data
+@app.get('/students')
+def get_all_students():
+    result = db.table('students').select('*').execute()
+    students = result.data
+    return students
 
-
-@app.get('/contact/{contact_id}')
-def get_contact(contact_id):
-    result = db.table('contacts').select('*').eq('id', contact_id).execute()
-    data = result.data 
+@app.get('/students/{students_id}')
+def get_student(students_id):
+    result = db.table('students').select('*').eq('id', students_id).execute()
+    data = result.data
     return data
 
-# @app.put('/contact/{contact_id}')
-# async def update_contact(request: Request, contact_id):
-#     data = await request.json()#{'phone':'8765432100}
-#     result = db.table('contacts').update(data).eq('id', contact_id).execute()
-#     return "updated successfully"
+@app.put('/student/{student_id}')
+async def update_student(request: Request, student_id):
+    data = await request.json()#{'score':900}
+    result = db.table('students').update(data).eq('id', student_id).execute()
+    return "updated "
 
-# @app.delete('/contact/{contact_id}')
-# def delete_contact(contact_id):
-#     result = db.table('contacts').delete().eq('id', contact_id).execute()
-#     return "deleted successfully"
+@app.delete('/student/{student_id}')
+def delete_student(student_id):
+    return "deleted "
+
