@@ -1,0 +1,72 @@
+Overview: Frontend vs Backend
+When building a web application, there are two main parts:
+Part	                Runs On	                                                 Main Role
+Frontend	     User’s Browser	                                  What the user sees (website design, buttons, forms)
+Backend	Server          (Python, Node.js, etc.)	                          Logic, database, authentication, APIs
+
+✅ HTML, CSS, JavaScript, React, Angular → Frontend
+✅ Python (Flask, Django, FastAPI) → Backend
+
+1.HTML (HyperText Markup Language):
+🔹 Meaning:
+HTML is the structure of a web page.
+It defines elements like headings, paragraphs, links, forms, etc.
+
+Python doesn’t replace HTML — it generates HTML pages.
+
+2.CSS (Cascading Style Sheets):
+🔹 Meaning:
+CSS controls the design and layout of a webpage — colors, fonts, spacing, and positioning.
+Python doesn’t write CSS — but your Flask/Django app serves CSS files to the browser.
+
+3.JavaScript (JS):
+🔹 Meaning:
+JavaScript adds interactivity to web pages — buttons, pop-ups, forms, animations, etc.
+JS calls Python backend → Python sends data back.
+
+4.React (JavaScript Framework):
+🔹 Meaning:
+React.js is a JavaScript library (by Facebook) for building dynamic, single-page web apps.
+It uses components to render UI quickly without reloading pages.
+React = Frontend
+Python (Flask/Django/FastAPI) = Backend API
+They communicate using REST APIs or JSON.
+
+5.Angular (JavaScript Framework):
+🔹 Meaning:
+Angular (by Google) is another JavaScript framework for building large, structured web apps.
+Like React, it can connect to a Python backend for data.
+🔹 In Python:
+Angular sends requests to Python API → Python sends back data.
+Example:
+Angular app calls: GET /api/products
+Python Flask/Django sends: JSON response of products.
+
+They All Work Together:
+
+| Layer                 | Technology                      | Example Task                  |
+| --------------------- | ------------------------------- | ----------------------------- |
+| **Frontend (Client)** | HTML                            | Structure of page             |
+|                       | CSS                             | Styling and layout            |
+|                       | JavaScript / React / Angular    | Interactivity and UI logic    |
+| **Backend (Server)**  | Python (Flask, Django, FastAPI) | Handles logic, database, APIs |
+| **Database**          | MySQL, PostgreSQL, MongoDB      | Stores user data              |
+
+
+
+Full Web Flow Example:
+User opens React/Angular webpage → browser sends request
+JavaScript calls Python API (using fetch() or axios)
+Python (Flask/Django) receives the request, queries the database
+Python returns data as JSON
+React or Angular displays it dynamically on the page.
+
+| Technology     | Type                 | Role                  | Works with Python?      |
+| -------------- | -------------------- | --------------------- | ----------------------- |
+| **HTML**       | Markup language      | Structure of page     | ✅ Yes                   |
+| **CSS**        | Styling language     | Design and layout     | ✅ Yes                   |
+| **JavaScript** | Programming language | Interactivity         | ✅ Yes (frontend)        |
+| **React**      | JS library           | Dynamic frontend UI   | ✅ Yes (connect via API) |
+| **Angular**    | JS framework         | Large-scale web apps  | ✅ Yes (connect via API) |
+| **Python**     | Backend language     | Logic, APIs, database | ✅ Core backend          |
+

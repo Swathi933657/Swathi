@@ -1,0 +1,141 @@
+1Q:Use another server in the place of Uvicorn?
+A. Hypercorn
+Hypercorn is a fully ASGI-compliant server from the Quart project.
+Install:
+pip install hypercorn
+
+Run:
+hypercorn main:app --bind 0.0.0.0:8000
+Note:
+main is your Python file name (without .py) and app is your FastAPI instance.
+
+B. Daphne
+Daphne is developed by the Django Channels project and supports ASGI.
+Install:
+pip install daphne
+
+Run:
+daphne -b 0.0.0.0 -p 8000 main:app
+
+C. Gunicorn (with Uvicorn workers)
+Gunicorn is a production-grade WSGI server, but with Uvicorn workers it can serve ASGI apps.
+Install:
+pip install gunicorn uvicorn
+
+Run:
+gunicorn main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+
+D. Trio / AnyIO backend servers (for advanced async control)
+If you use Trio or AnyIO for concurrency, Hypercorn supports them natively:
+hypercorn main:app --worker-class trio
+
+2.What ia API Gate way?
+Ans:An API Gateway is a server that acts as an entry point for all client requests going to your backend services (microservices, databases, etc.).
+It sits between the client (like a web app or mobile app) and your backend APIs.
+**API Gateway → routes to product-service (maybe http://10.0.0.12:8080/products)**
+
+Main functions of API Gateway:
+| Function                           | Description                                              |
+| ---------------------------------- | -------------------------------------------------------- |
+| **Routing**                        | Sends requests to the correct microservice               |
+| **Authentication & Authorization** | Verifies user identity (e.g., JWT, OAuth2)               |
+| **Rate Limiting**                  | Prevents abuse by limiting request frequency             |
+| **Caching**                        | Stores responses temporarily to speed up future requests |
+| **Load Balancing**                 | Distributes traffic across multiple servers              |
+| **Logging & Monitoring**           | Tracks performance, errors, and usage                    |
+| **Request Transformation**         | Modifies headers or formats before forwarding            |
+| **Security**                       | Hides internal service structure from clients            |
+
+
+Common API Gateway Tools / Services:
+| Platform             | Example                                                    |
+| -------------------- | ---------------------------------------------------------- |
+| **AWS**              | Amazon API Gateway                                         |
+| **Azure**            | Azure API Management                                       |
+| **Google Cloud**     | Apigee                                                     |
+| **Kong**             | Open-source gateway                                        |
+| **NGINX**            | Can act as an API gateway                                  |
+| **Traefik**          | Cloud-native reverse proxy                                 |
+| **FastAPI / Python** | You can even build a mini gateway using FastAPI + requests |
+
+3.What is different types of deployment?
+Ans:Deployment = making your application live — moving code from your local machine to a server, cloud, or container, so users or other systems can access it.
+Types of Deployment (by method):
+| Deployment Type                  | Description                                                                                     | Example                                         |
+| -------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **Manual Deployment**            | Developer uploads files/code manually to the server.                                            | Using FTP or SCP to copy project files.         |
+| **Automated Deployment (CI/CD)** | Uses tools to automatically build, test, and deploy code.                                       | Jenkins, GitHub Actions, GitLab CI/CD, CircleCI |
+| **Rolling Deployment**           | Gradually replaces old version with new version, one server (or container) at a time.           | Used in Kubernetes clusters                     |
+| **Blue-Green Deployment**        | Two identical environments (Blue = old, Green = new). Switch traffic to the new one when ready. | AWS Elastic Beanstalk, Kubernetes               |
+| **Canary Deployment**            | Releases new version to a **small % of users** first; if stable, rollout increases.             | Netflix, Google                                 |
+| **Recreate Deployment**          | Stops the old version completely, then deploys the new version.                                 | Simple servers or dev environments              |
+| **Shadow Deployment**            | New version runs alongside old one, but traffic is “copied” (not seen by users) for testing.    | Used for testing in production safely           |
+| **A/B Testing Deployment**       | Deploy two different versions to see which performs better.                                     | Common in web apps and APIs                     |
+
+4.What is fireball?
+Ans:In Baseball: "Fair Ball"
+A fair ball is a batted ball that lands or stays within the field of play.
+Fair Ball Example:
+The batter hits the ball.
+It lands inside the foul lines (between first base and third base).
+Or it touches any part of the field before crossing the foul line.
+→ That’s a fair ball, meaning the play continues — runners can advance, and the batter can run.
+# Foul Ball Example:
+If the ball lands outside the foul lines or goes out of bounds, it’s a foul ball, and the play stops (except for some cases). 
+
+“Fireball”
+Sometimes used as a name for a project, app, or game engine.
+
+5.Write a program to demonstrate "is a" and "has a"?
+Ans:IS-A” Relationship (Inheritance)
+“A Dog is a Animal”
+Means: Dog inherits from Animal.
+Used when one class extends another.
+
+ “HAS-A” Relationship (Composition)
+ “A Car has a Engine”
+Means: Car contains an Engine object inside it.
+Used when one class uses another as a member object.
+
+ Python Program Demonstration
+# -------------------------
+# "IS-A" Relationship Example
+# -------------------------
+
+class Animal:                 # Parent class
+    def speak(self):
+        return "Some generic animal sound"
+
+class Dog(Animal):            # Dog IS-A Animal
+    def speak(self):
+        return "Bark!"
+
+# -------------------------
+# "HAS-A" Relationship Example
+# -------------------------
+
+class Engine:
+    def start(self):
+        return "Engine started"
+
+class Car:
+    def __init__(self):
+        # Car HAS-A Engine
+        self.engine = Engine()
+
+    def drive(self):
+        return f"Car is driving and {self.engine.start()}"
+
+# -------------------------
+# Demonstration
+# -------------------------
+
+# IS-A
+dog = Dog()
+print("IS-A Example:")
+print(dog.speak())  # Output: Bark!
+
+# HAS-A
+car = Car()
+print("\nHAS-A Example:")
+print(car.drive())  # Output: Car is driving and Engine started

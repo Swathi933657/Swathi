@@ -1,0 +1,57 @@
+1. What is Cloud Computing?
+Cloud Computing means using internet-based servers to:
+-Store data
+-Run applications
+-Host websites
+-Analyze big data
+-Deploy AI/ML models
+-Instead of running your code or database on your own computer, you run it on remote servers (“the cloud”).
+
+Simple Example:
+When you run a Python web app on your laptop, only you can access it.
+But if you deploy it to the cloud, anyone with internet can access it (like a real website).
+
+2. What is AWS (Amazon Web Services)?
+
+AWS = Amazon Web Services
+It’s one of the largest cloud platforms in the world.
+it provides hundreds of services for:
+
+-Hosting web apps
+-Storing files (S3)
+-Running virtual machines (EC2)
+-Managing databases (RDS, DynamoDB)
+-Deploying AI/ML models (SageMaker)
+-Serverless computing (Lambda)
+
+How Python is used with AWS
+You can use Python to interact with AWS using:
+Boto3 → AWS’s official Python SDK (Software Development Kit).
+
+3. What is GCP (Google Cloud Platform)?
+GCP = Google Cloud Platform — Google’s cloud service.
+It offers similar tools to AWS, such as:
+-Compute Engine – run virtual machines
+-Cloud Storage – store files
+-BigQuery – analyze data
+-AI Platform – train and deploy ML models
+-Cloud Functions – run serverless Python functions.
+
+Python Fits into Cloud Computing
+
+Python is widely used in the cloud for:
+
+Use Case	        Example
+- Web Apps	        Flask/Django hosted on AWS EC2 or GCP Compute Engine
+- Machine Learning	Train models with TensorFlow on Google AI Platform or AWS SageMaker
+- Serverless Apps	Run Python functions using AWS Lambda or Google Cloud Functions
+- Data Processing	Use Python + BigQuery / AWS Glue for big data
+- Automation	        Python scripts automate cloud tasks (e.g., starting servers, uploading files)
+
+| Concept             | Meaning                                     | Python Usage                                         |
+| ------------------- | ------------------------------------------- | ---------------------------------------------------- |
+| **Cloud Computing** | Running apps & storing data on the internet | Python apps deployed on cloud servers                |
+| **AWS**             | Amazon’s cloud platform                     | Use `boto3` to manage AWS resources                  |
+| **GCP**             | Google’s cloud platform                     | Use `google-cloud` libraries to manage GCP resources |
+
+
